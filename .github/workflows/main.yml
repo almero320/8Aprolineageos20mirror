@@ -10,7 +10,7 @@ jobs:
       - name: Download ROM
         run: |
           FILE_NAME="lineage-20.0-20240201-nightly-Mi439-signed.zip"
-          wget -c "https://lineage-archive.timschumi.net/build/17158/download?file=$FILE_NAME" -O "$FILE_NAME"
+          wget -c "https://b4.timschumi.net/lineage-archive/lineage-20.0-20240208-nightly-Mi439-signed.zip" -O "$FILE_NAME"
 
       - name: Upload to Release
         uses: softprops/action-gh-release@v1
