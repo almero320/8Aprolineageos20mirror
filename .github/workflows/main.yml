@@ -1,0 +1,22 @@
+name: Mirror Lineage ROM
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download_and_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download ROM
+        run: |
+          FILE_NAME="lineage-20.0-20240201-nightly-Mi439-signed.zip"
+          wget -c "https://lineage-archive.timschumi.net/build/17158/download?file=$FILE_NAME" -O "$FILE_NAME"
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "lineage-mi439-20240201"
+          release_name: "LineageOS 20.0 - 20240201 for Mi439"
+          files: lineage-20.0-20240201-nightly-Mi439-signed.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
