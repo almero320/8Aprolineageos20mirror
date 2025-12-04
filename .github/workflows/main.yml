@@ -6,6 +6,8 @@ on:
 jobs:
   download_and_release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download ROM
         run: |
@@ -16,7 +18,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: "lineage-mi439-20240201"
-          release_name: "LineageOS 20.0 - 20240201 for Mi439"
-          files: lineage-20.0-20240201-nightly-Mi439-signed.zip
+          name: "LineageOS 20.0 20240201 Mi439"
+          files: "$FILE_NAME"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
