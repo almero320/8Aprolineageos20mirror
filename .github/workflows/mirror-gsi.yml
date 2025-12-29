@@ -1,0 +1,57 @@
+name: Mirror ROMs to GitHub Releases
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mi439_lineage20:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download LineageOS 20 (Mi439)
+        run: |
+          curl -L --retry 999 --retry-delay 10 --retry-all-errors \
+          -o lineage-20.0-20240208-nightly-Mi439-signed.zip \
+          https://b4.timschumi.net/lineage-archive/lineage-20.0-20240208-nightly-Mi439-signed.zip
+
+      - name: Generate checksum
+        run: sha256sum lineage-20.0-20240208-nightly-Mi439-signed.zip > lineage-20.0-20240208-nightly-Mi439-signed.zip.sha256
+
+      - name: Upload Release (Mi439)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lineage20-mi439-20240208
+          name: "LineageOS 20.0 | Mi439 | 2024-02-08"
+          body: |
+            Unofficial mirror for stability.
+            Source: https://b4.timschumi.net/lineage-archive/
+          files: |
+            lineage-20.0-20240208-nightly-Mi439-signed.zip
+            lineage-20.0-20240208-nightly-Mi439-signed.zip.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  gsi_lineage21:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download LineageOS 21 GSI (arm64_bvN)
+        run: |
+          curl -L --retry 999 --retry-delay 10 --retry-all-errors \
+          -o lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz \
+          https://downloads.sourceforge.net/project/andyyan-gsi/lineage-21-td/lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz
+
+      - name: Generate checksum
+        run: sha256sum lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz > lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz.sha256
+
+      - name: Upload Release (GSI)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lineage21-gsi-arm64-bvN-20250621
+          name: "LineageOS 21 GSI | arm64_bvN | 2025-06-21"
+          body: |
+            Unofficial mirror for stability.
+            Source: https://sourceforge.net/projects/andyyan-gsi/
+          files: |
+            lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz
+            lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
