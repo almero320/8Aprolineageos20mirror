@@ -10,7 +10,7 @@ jobs:
       - name: Download LineageOS 21 GSI (arm64_bvN)
         run: |
           curl -L --retry 999 --retry-delay 10 --retry-all-errors \
-          -o lineage-21.0-20250621-UNOFFICIAL-arm64_bvN.img.gz \
+          -o lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz \
           https://downloads.sourceforge.net/project/andyyan-gsi/lineage-20-td/lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz
 
       - name: Generate checksum
