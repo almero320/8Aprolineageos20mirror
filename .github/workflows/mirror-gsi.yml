@@ -11,7 +11,7 @@ jobs:
         run: |
           curl -L --retry 999 --retry-delay 10 --retry-all-errors \
           -o lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz \
-          https://downloads.sourceforge.net/project/andyyan-gsi/lineage-20-td/lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz
+          https://downloads.sourceforge.net/project/andyyan-gsi/lineage-19.x/lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz?ts=gAAAAABpVAXIzphNqDHuAeaH_wPlb9Q_SLQKQDFvRJZ4zIjplUnZXrk282MkaNDRv8R1VQeul8Y1iPik2ill_QKGVLHW2O1JaA%3D%3D&use_mirror=cytranet-dal&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fandyyan-gsi%2Ffiles%2Flineage-19.x%2Flineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz%2Fdownload
 
       - name: Generate checksum
         run: sha256sum lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz > lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz.sha256
