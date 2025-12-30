@@ -7,25 +7,25 @@ jobs:
   gsi_lineage21:
     runs-on: ubuntu-latest
     steps:
-      - name: Download LineageOS 21 GSI (arm64_bvN)
+      - name: Download LineageOS 19.1 GSI (arm64_bvN)
         run: |
           curl -L --retry 999 --retry-delay 10 --retry-all-errors \
-          -o lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz \
-          https://downloads.sourceforge.net/project/andyyan-gsi/lineage-20-td/lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz
+          -o lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz \
+          https://downloads.sourceforge.net/project/andyyan-gsi/lineage-20-td/lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz
 
       - name: Generate checksum
-        run: sha256sum lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz > lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz.sha256
+        run: sha256sum lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz > lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz.sha256
 
       - name: Upload Release (GSI)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: lineage20-gsi-arm64-bvN-20251021
-          name: "LineageOS 20 GSI | arm64_bvN | 2025-10-21"
+          tag_name: lineage19.1-gsi-arm64-bvN-20250606
+          name: "LineageOS 19.1 GSI | arm64_bvN | 2025-06-06"
           body: |
             Unofficial mirror for stability.
             Source: https://sourceforge.net/projects/andyyan-gsi/
           files: |
-            lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz
-            lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz.sha256
+            lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz
+            lineage-19.1-20250606-UNOFFICIAL-arm64_bvN.img.gz.sha256
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
