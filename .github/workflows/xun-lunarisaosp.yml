@@ -1,5 +1,5 @@
 
-name: Mirror ROMs to GitHub Releases
+name: LunarisAOSP 3.7 For Redmi Pad SE (xun)
 
 on:
   workflow_dispatch:
