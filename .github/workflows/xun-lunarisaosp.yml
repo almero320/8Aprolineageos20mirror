@@ -1,1 +1,32 @@
 
+name: Mirror ROMs to GitHub Releases
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gsi_lineage21:
+    runs-on: ubuntu-latest
+    steps:
+      - name: LunarisAOSP 3.7 For Redmi Pad SE (xun)
+        run: |
+          curl -L --retry 999 --retry-delay 10 --retry-all-errors \
+          -o Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip \
+          "https://downloads.sourceforge.net/project/irawansprojekt/xun/Android%2016/LunarisAOSP/Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip"
+
+      - name: Generate checksum
+        run: sha256sum Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip > Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip.sha256
+
+      - name: Upload Release (GSI)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507
+          name: "Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507"
+          body: |
+            Unofficial mirror for stability.
+            Source: https://sourceforge.net/projects/irawansprojectkt/
+          files: |
+            Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip
+            Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
