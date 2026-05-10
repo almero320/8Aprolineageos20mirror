@@ -1,0 +1,32 @@
+
+name: Latest amd driver rx580
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gsi_lineage21:
+    runs-on: ubuntu-latest
+    steps:
+      - name: amd rx580 driver 
+        run: |
+          curl -L --retry 999 --retry-delay 10 --retry-all-errors \
+          -o whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe \
+          "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe"
+
+      - name: Generate checksum
+        run: sha256sum whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe > whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe.sha256
+
+      - name: Upload Release (GSI)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507
+          name: "Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507"
+          body: |
+            Unofficial mirror for stability.
+            Source: AMD
+          files: |
+            Lunaris-AOSP-xun-Community-3.7-VANILLA-202602150l
+            Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
