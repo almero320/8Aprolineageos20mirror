@@ -20,13 +20,13 @@ jobs:
       - name: Upload Release (GSI)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507
-          name: "Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507"
+          tag_name: amd rx580 driver
+          name: "amd rx 580 driver"
           body: |
             Unofficial mirror for stability.
             Source: AMD
           files: |
-            Lunaris-AOSP-xun-Community-3.7-VANILLA-202602150l
-            Lunaris-AOSP-xun-Community-3.7-VANILLA-2026021507.zip.sha256
+            whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe
+            whql-amd-software-adrenalin-edition-26.1.1-win11-jan-vega-polaris.exe.sha256
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
